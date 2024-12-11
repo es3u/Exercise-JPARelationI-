@@ -2,7 +2,9 @@ package com.example.exercisejparelationi.ControllerAdvice;
 
 import com.example.exercisejparelationi.ApiException.ApiException;
 import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.UnexpectedTypeException;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.dao.InvalidDataAccessResourceUsageException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.sql.SQLIntegrityConstraintViolationException;
 
@@ -79,4 +82,20 @@ public class CotnrollerAdvice{
         String msg = e.getMessage();
         return ResponseEntity.status(400).body(msg);
     }
+    @ExceptionHandler(value = UnexpectedTypeException.class)
+    public ResponseEntity UnexpectedTypeException(UnexpectedTypeException e) {
+        String msg = e.getMessage();
+        return ResponseEntity.status(400).body(msg);
+    }
+    @ExceptionHandler(value = NoResourceFoundException.class)
+    public ResponseEntity NoResourceFoundException(NoResourceFoundException e) {
+        String msg = e.getMessage();
+        return ResponseEntity.status(400).body(msg);
+    }
+    @ExceptionHandler(value = InvalidDataAccessApiUsageException.class)
+    public ResponseEntity InvalidDataAccessApiUsageException(InvalidDataAccessApiUsageException e) {
+        String msg = e.getMessage();
+        return ResponseEntity.status(400).body(msg);
+    }
 }
+

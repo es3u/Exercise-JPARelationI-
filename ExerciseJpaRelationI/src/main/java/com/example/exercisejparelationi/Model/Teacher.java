@@ -8,11 +8,13 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Check;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Check(constraints = "age >15")
 public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,10 +26,11 @@ public class Teacher {
 
     @NotNull(message = "age can not be null")
     @Column(columnDefinition = "int not null")
-    @Size(min = 15)
+//    @Size(min = 15)
     private Integer age;
 
     @NotEmpty(message = "email can not be null")
+    @Column(columnDefinition = "varchar(50)")
     @Email
     private String email;
 

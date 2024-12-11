@@ -37,9 +37,9 @@ public class TeacherService {
         public void deleteTeacher(Integer id) {
             Teacher teacher1 = teacherRepository.findTeacherById(id);
             Address address = addressRepository.findAddressById(id) ;
-            if(address == null) {
-                throw new ApiException("address not found");
-            }
+//            if(address == null) {
+//                throw new ApiException("address not found");
+//            }
             if(teacher1 == null) {
                 throw new ApiException("teacher not found");
 
